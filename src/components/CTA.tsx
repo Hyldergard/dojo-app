@@ -8,7 +8,11 @@
 import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-const CTA: React.FC = () => {
+interface CTAProps {
+  onOpenModal: () => void;
+}
+
+const CTA: React.FC<CTAProps> = ({ onOpenModal }) => {
   const [ref, isVisible] = useScrollReveal({ threshold: 0.2 });
 
   return (
@@ -33,7 +37,10 @@ const CTA: React.FC = () => {
           Trial class GRATIS! Gak perlu pengalaman, cukup bawa semangat dan kemauan untuk belajar!
         </p>
         
-        <button className="bg-energy text-black px-16 py-6 font-bold text-xl uppercase tracking-wider hover:bg-energy-light transition transform hover:scale-110 shadow-2xl shadow-energy/50 border-2 border-transparent active:scale-95">
+        <button 
+          onClick={onOpenModal}
+          className="bg-energy text-black px-16 py-6 font-bold text-xl uppercase tracking-wider hover:bg-energy-light transition transform hover:scale-110 shadow-2xl shadow-energy/50 border-2 border-transparent active:scale-95"
+        >
           DAFTAR SEKARANG!
         </button>
         

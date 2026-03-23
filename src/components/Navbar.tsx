@@ -6,7 +6,11 @@
 
 import React, { useState, useEffect } from 'react';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onOpenModal: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -26,8 +30,8 @@ const Navbar: React.FC = () => {
 
   return (
     <nav 
-      className={`fixed w-full z-50 transition-all duration-300 border-b-4 ${
-        scrolled ? 'bg-black/95 backdrop-blur py-2 border-energy' : 'bg-transparent py-4 border-transparent'
+      className={`fixed top-14 w-full z-50 transition-all duration-300 border-b-4 ${
+        scrolled ? 'bg-black/95 backdrop-blur py-2 border-energy' : 'bg-black/60 backdrop-blur-sm py-4 border-white/5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,12 +57,12 @@ const Navbar: React.FC = () => {
                 {link.name}
               </a>
             ))}
-            <a 
-              href="#join"
+            <button 
+              onClick={onOpenModal}
               className="ml-4 bg-energy text-black px-8 py-4 font-bold text-sm uppercase tracking-widest hover:bg-energy-light transition transform hover:scale-105 shadow-lg shadow-energy/20"
             >
               Join Now!
-            </a>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -95,13 +99,15 @@ const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
-          <a
-            href="#join"
-            onClick={() => setIsOpen(false)}
+          <button
+            onClick={() => {
+              setIsOpen(false);
+              onOpenModal();
+            }}
             className="block w-full mt-6 bg-energy text-black px-4 py-5 font-bold text-center uppercase tracking-widest shadow-lg"
           >
             Join Now!
-          </a>
+          </button>
         </div>
       </div>
     </nav>

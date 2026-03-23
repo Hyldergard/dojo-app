@@ -82,7 +82,11 @@ const ProgramCard: React.FC<ProgramCardProps> = ({
   );
 };
 
-const Programs: React.FC = () => {
+interface ProgramsProps {
+  onOpenModal: () => void;
+}
+
+const Programs: React.FC<ProgramsProps> = ({ onOpenModal }) => {
   const [refHeader, isHeaderVisible] = useScrollReveal({ threshold: 0.2 });
 
   const programs = [
@@ -138,7 +142,10 @@ const Programs: React.FC = () => {
             <h2 className="font-display text-6xl text-white">PILIH LEVEL KAMU!</h2>
           </div>
           {/* Button Added (Option 1) */}
-          <button className="mt-4 md:mt-0 border-2 border-energy text-energy px-8 py-4 font-bold uppercase tracking-widest hover:bg-energy hover:text-black transition flex items-center gap-2">
+          <button 
+            onClick={onOpenModal}
+            className="mt-4 md:mt-0 border-2 border-energy text-energy px-8 py-4 font-bold uppercase tracking-widest hover:bg-energy hover:text-black transition flex items-center gap-2"
+          >
             Lihat Semua <span>→</span>
           </button>
         </div>

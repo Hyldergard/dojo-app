@@ -8,7 +8,11 @@
 import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onOpenModal: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   const [ref, isVisible] = useScrollReveal({ threshold: 0.1 });
 
   return (
@@ -42,7 +46,10 @@ const Hero: React.FC = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <button className="bg-energy text-black px-10 py-5 font-bold text-lg uppercase tracking-wide hover:bg-energy-light transition transform hover:scale-105 shadow-lg shadow-energy/30">
+              <button 
+                onClick={onOpenModal}
+                className="bg-energy text-black px-10 py-5 font-bold text-lg uppercase tracking-wide hover:bg-energy-light transition transform hover:scale-105 shadow-lg shadow-energy/30"
+              >
                 Mulai Sekarang!
               </button>
               <button className="border-2 border-white text-white px-10 py-5 font-bold text-lg uppercase tracking-wide hover:bg-white hover:text-black transition">

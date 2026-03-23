@@ -10,14 +10,18 @@
  * @version 1.0.0
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
+import TopBar from './components/TopBar';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import Programs from './components/Programs';
+import BeltJourney from './components/BeltJourney';
+import SenseiShowcase from './components/SenseiShowcase';
 import Achievements from './components/Achievements';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
+import TrialModal from './components/TrialModal';
 
 /**
  * App Component
@@ -25,31 +29,48 @@ import Footer from './components/Footer';
  * dengan style Bold & Dynamic
  */
 function App(): React.ReactElement {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
-    <div className="font-sans antialiased bg-gray-900 text-white overflow-x-hidden">
+    <div className="font-sans antialiased bg-gray-900 text-white overflow-x-hidden pt-14">
+      {/* Top Bar (Countdown) */}
+      <TopBar onOpenModal={openModal} />
+
       {/* Navigation */}
-      <Navbar />
+      <Navbar onOpenModal={openModal} />
       
       {/* Main Content */}
       <main>
         {/* Hero Section */}
-        <Hero />
+        <Hero onOpenModal={openModal} />
         
         {/* Features Section */}
         <Features />
         
         {/* Programs Section */}
-        <Programs />
+        <Programs onOpenModal={openModal} />
+        
+        {/* Belt Journey Section (New) */}
+        <BeltJourney />
+
+        {/* Sensei Showcase Section (New) */}
+        <SenseiShowcase />
         
         {/* Achievements Section */}
         <Achievements />
         
         {/* Call to Action Section */}
-        <CTA />
+        <CTA onOpenModal={openModal} />
       </main>
       
       {/* Footer */}
       <Footer />
+
+      {/* Trial Modal */}
+      <TrialModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 }

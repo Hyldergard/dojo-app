@@ -51,9 +51,23 @@ body {
   color: transparent;
 }
 
+.text-stroke-energy {
+  -webkit-text-stroke: 1.5px #ff6b35;
+  color: transparent;
+}
+
 /* Diagonal Clip Effect from Opsi 04 */
 .diagonal-clip {
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+/* Hide Scrollbar for Horizontal Scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Zigzag Pattern for Hero and CTA backgrounds */
