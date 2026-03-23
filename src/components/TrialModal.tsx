@@ -30,7 +30,7 @@ const TrialModal: React.FC<TrialModalProps> = ({ isOpen, onClose }) => {
     e.preventDefault();
     
     // Konfigurasi Nomor WhatsApp
-    const adminPhone = "6285880998853";
+    const adminPhone = "6200000000000";
     
     // Format Pesan
     const message = `Halo Sensei! OSU!%0A%0ASaya ingin mendaftar untuk *KARATE FREE TRIAL* di Dojo Pondsel.%0A%0A*Detail Pendaftar:*%0A- Nama: ${formData.name}%0A- No. WA: ${formData.whatsapp}%0A- Jadwal Pilih: ${formData.schedule.toUpperCase()}%0A%0AMohon konfirmasi jadwalnya. Terima kasih!`;
