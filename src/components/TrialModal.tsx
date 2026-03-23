@@ -28,8 +28,19 @@ const TrialModal: React.FC<TrialModalProps> = ({ isOpen, onClose }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulasikan submit data
-    alert(`Terima kasih ${formData.name}! Pendaftaran Karate Trial Anda telah kami terima.\nTim Dojo Pondsel akan segera menghubungi Anda via WhatsApp.`);
+    
+    // Konfigurasi Nomor WhatsApp
+    const adminPhone = "6285880998853";
+    
+    // Format Pesan
+    const message = `Halo Sensei! OSU!%0A%0ASaya ingin mendaftar untuk *KARATE FREE TRIAL* di Dojo Pondsel.%0A%0A*Detail Pendaftar:*%0A- Nama: ${formData.name}%0A- No. WA: ${formData.whatsapp}%0A- Jadwal Pilih: ${formData.schedule.toUpperCase()}%0A%0AMohon konfirmasi jadwalnya. Terima kasih!`;
+    
+    // Redirect ke WhatsApp
+    const waUrl = `https://api.whatsapp.com/send?phone=${adminPhone}&text=${message}`;
+    
+    alert('Mengalihkan Anda ke WhatsApp untuk finalisasi pendaftaran...');
+    window.open(waUrl, '_blank');
+    
     onClose();
     // Reset form
     setFormData({ name: '', whatsapp: '', schedule: 'pagi' });
